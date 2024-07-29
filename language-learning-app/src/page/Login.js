@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {  signInWithEmailAndPassword   } from 'firebase/auth';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase';
 import { NavLink, useNavigate } from 'react-router-dom'
  
@@ -22,16 +22,14 @@ const Login = () => {
             const errorMessage = error.message;
             console.log(errorCode, errorMessage)
         });
-       
     }
  
     return(
         <>
-            <main >        
+            <main>        
                 <section>
                     <div>                                            
-                        <p> FocusApp </p>                       
-                                                       
+                        <p> FocusApp </p>                                   
                         <form>                                              
                             <div>
                                 <label htmlFor="email-address">
@@ -69,14 +67,18 @@ const Login = () => {
                                 </button>
                             </div>                               
                         </form>
-                       
+                        <p className="text-sm text-white text-center">
+                            No account yet? {' '}
+                            <NavLink to="/forgotpassword">
+                                Forget Password
+                            </NavLink>
+                        </p>
                         <p className="text-sm text-white text-center">
                             No account yet? {' '}
                             <NavLink to="/signup">
                                 Sign up
                             </NavLink>
-                        </p>
-                                                   
+                        </p>          
                     </div>
                 </section>
             </main>
