@@ -86,7 +86,9 @@ const ForgetPassword = () => {
                                                 required                                    
                                                 placeholder="Email Address"
                                                 borderColor="#36454F" 
-                                                margin={5}                             
+                                                margin={5}
+                                                boxShadow='xl'
+                                                bgColor=''                           
                                             />
                                             <Button
                                                 type="submit"
@@ -102,9 +104,10 @@ const ForgetPassword = () => {
                                                 borderWidth='2px' 
                                                 boxShadow='xl'
                                                 _hover={{
-                                                    background: "#36454F",
-                                                    color: "white",
-                                                    opacity: "0.95",
+                                                    shadow: 'md',                                                    
+                                                    transform: 'translateY(0.5px)',
+                                                    transitionDuration: '0.1s',
+                                                    transitionTimingFunction: "ease-in-out"
                                                 }}
                                             >
                                                 Reset Password

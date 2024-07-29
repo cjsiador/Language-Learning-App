@@ -69,7 +69,9 @@ const Login = () => {
                                         required                                    
                                         placeholder="Email Address"
                                         borderColor="#36454F" 
-                                        margin={0}     
+                                        margin={0}
+                                        boxShadow='xl'
+                                        bgColor=''  
                                     />
                                     <Text
                                         width="80%"
@@ -87,7 +89,8 @@ const Login = () => {
                                             required                                    
                                             placeholder="Password"
                                             borderColor="#36454F" 
-                                            margin={0} 
+                                            margin={0}
+                                            boxShadow='xl' 
                                         >
                                         </Input>
                                         <InputRightElement width='4.5rem' marginTop='5px'>
@@ -131,10 +134,11 @@ const Login = () => {
                                         borderWidth='2px' 
                                         boxShadow='xl'
                                         _hover={{
-                                            background: "#36454F",
-                                            color: "white",
-                                            opacity: "0.95",
-                                        }}                                       
+                                            shadow: 'md',                                                    
+                                            transform: 'translateY(0.5px)',
+                                            transitionDuration: '0.1s',
+                                            transitionTimingFunction: "ease-in-out"
+                                        }}                                  
                                     >      
                                         Login                                                                  
                                     </Button>

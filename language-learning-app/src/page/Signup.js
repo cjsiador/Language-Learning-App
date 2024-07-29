@@ -2,12 +2,24 @@ import React, {useState} from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import {  createUserWithEmailAndPassword  } from 'firebase/auth';
 import { auth } from '../firebase';
+import { InputRightElement, InputGroup, Input, Box, Center, Text, Button, VStack } from '@chakra-ui/react'
+import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons' 
  
 const Signup = () => {
     const navigate = useNavigate();
  
     const [email, setEmail] = useState('')
+    const [isEmailValid, setIsEmailValid] = useState();
     const [password, setPassword] = useState('');
+    const [show, setShow] = useState(false);
+
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    const validateEmail = (e) => {
+        e.preventDefault();
+        setEmail(e.target.value);
+        setIsEmailValid(regex.test(email));
+    }
  
     const onSubmit = async (e) => {
       e.preventDefault();
@@ -30,60 +42,136 @@ const Signup = () => {
             }
         });
     }
- 
-  return (
-    <main >        
-        <section>
-            <div>
-                <div>                  
-                    <h1> FocusApp </h1>                                                                            
-                    <form>                                                                                            
-                        <div>
-                            <label htmlFor="email-address">
-                                Email address
-                            </label>
-                            <input
-                                type="email"
-                                label="Email address"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}  
-                                required                                    
-                                placeholder="Email address"                                
-                            />
-                        </div>
 
-                        <div>
-                            <label htmlFor="password">
-                                Password
-                            </label>
-                            <input
-                                type="password"
-                                label="Create password"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)} 
-                                required                                 
-                                placeholder="Password"              
-                            />
-                        </div>                                             
-                        <button
-                            type="submit" 
-                            onClick={onSubmit}                        
-                        >  
-                            Sign up                                
-                        </button>
-                                                                     
-                    </form>
-                   
-                    <p>
-                        Already have an account?{' '}
-                        <NavLink to="/login" >
-                            Sign in
-                        </NavLink>
-                    </p>                   
-                </div>
-            </div>
-        </section>
-    </main>
+    const handleShowPassword = () => {
+        setShow(!show);
+    }
+ 
+    return (
+        <>
+            <Box backgroundImage='linear-gradient(to top, #00c6fb 0%, #005bea 100%)' width='100wh' height='100vh'>
+                <Center>
+                    <Box backgroundImage='linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%)' width="50vw" minWidth="300px" maxWidth="500px" marginTop='25vh' height='600px' borderColor="#36454F" borderRadius='lg' borderWidth='4px' boxShadow='dark-lg'>
+                        <Center>
+                            <Box alignContent='center' width='90%' height='500px' marginTop='50'>
+                                <VStack>
+                                    <Text
+                                        fontSize='30px'
+                                        fontWeight='bold'
+                                        textAlign='center'
+                                    >
+                                        Create an account
+                                    </Text>                                   
+                                    <Text
+                                        width="80%"
+                                        textAlign='left'
+                                        marginTop='50px'
+                                    >
+                                        Email Addresss
+                                    </Text>
+                                    <Input
+                                        width="80%"
+                                        height="50px"
+                                        type="email"
+                                        label="Email address"                                   
+                                        onChange={(e)=> validateEmail(e)}
+                                        required                                    
+                                        placeholder="Email Address"
+                                        borderColor="#36454F" 
+                                        margin={0}
+                                        boxShadow='xl'     
+                                    />
+                                    <Text
+                                        width="80%"
+                                        textAlign='left'
+                                    >
+                                        Password
+                                    </Text>
+                                    <InputGroup width='80%'>
+                                        <Input
+                                            height="50px"
+                                            id="password"
+                                            name="password"
+                                            type={show ? 'text' : 'password'}
+                                            onChange={(e)=>setPassword(e.target.value)}
+                                            required                                    
+                                            placeholder="Password"
+                                            borderColor="#36454F" 
+                                            margin={0}
+                                            boxShadow='xl' 
+                                        >
+                                        </Input>
+                                        <InputRightElement width='4.5rem' marginTop='5px'>
+                                            {show ? 
+                                            <ViewIcon 
+                                                size='sm' 
+                                                onClick={handleShowPassword}
+
+                                            /> 
+                                            : 
+                                            <ViewOffIcon
+                                                size='sm'
+                                                onClick={handleShowPassword}
+                                            />
+                                            }
+                                        </InputRightElement>
+                                    </InputGroup>
+                                    <Text 
+                                        as='b'
+                                        width="80%"
+                                        textAlign='right' 
+                                        fontSize='16px'
+                                        bgGradient='linear-gradient(to top, #00c6fb 0%, #005bea 100%)'
+                                        bgClip='text'
+                                    >
+                                        <NavLink to="/forgetpassword">
+                                            Reset Password
+                                        </NavLink>
+                                    </Text>                          
+                                    <Button
+                                        type="submit"
+                                        disabled={!isEmailValid}                           
+                                        onClick={onSubmit}
+                                        margin={3}
+                                        height='50px'
+                                        width='80%'
+                                        backgroundImage='linear-gradient(to left, #00c6fb 0%, #005bea 100%)'
+                                        color='white'
+                                        borderColor="#36454F" 
+                                        borderRadius='lg' 
+                                        borderWidth='2px' 
+                                        boxShadow='xl'
+                                        _hover={{
+                                            shadow: 'md',                                                    
+                                            transform: 'translateY(0.5px)',
+                                            transitionDuration: '0.1s',
+                                            transitionTimingFunction: "ease-in-out"
+                                        }}                                      
+                                    >      
+                                        Login                                                                  
+                                    </Button>
+                                    <Text>
+                                        Have an account? {' '}
+                                        <Text
+                                            as='b'
+                                            width="80%"
+                                            textAlign='right' 
+                                            fontSize='16px'
+                                            bgGradient='linear-gradient(to top, #00c6fb 0%, #005bea 100%)'
+                                            bgClip='text'
+                                        >
+                                            <NavLink to="/login">
+                                                Login
+                                            </NavLink>
+                                        </Text>
+                                    </Text>
+                                </VStack>
+                            </Box>
+                        </Center>   
+                    </Box>
+                </Center>
+            </Box>     
+        </>
   )
 }
  
