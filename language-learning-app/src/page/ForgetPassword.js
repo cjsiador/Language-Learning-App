@@ -46,7 +46,7 @@ const ForgetPassword = () => {
                 <Center>
                     <Box>
                         <FormControl id="reset-password-form">
-                            <Box backgroundImage='linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%)' width="50vw" minWidth="300px" maxWidth="500px" marginTop='25vh' height='600px' borderColor="#36454F" borderRadius='lg' borderWidth='4px'>
+                            <Box backgroundImage='linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%)' width="50vw" minWidth="300px" maxWidth="500px" marginTop='25vh' height='600px' borderColor="#36454F" borderRadius='lg' borderWidth='4px' boxShadow='dark-lg'>
                                 <Center>
                                     <Box alignContent='center' width='90%' height='500px' marginTop='50'>
                                         <VStack>
@@ -71,7 +71,8 @@ const ForgetPassword = () => {
                                                     color="purple"
                                                     margin={5}
                                                     textAlign='center'
-                                                >If your email matches an existing account we will send you a recovery email within a few minutes. If you have not received an email check your spam folder or contact Support.</Text>
+                                                >
+                                                    If your email matches an existing account we will send you a recovery email within a few minutes. If you have not received an email check your spam folder or contact Support.</Text>
                                                 :
                                                 <Text></Text>
                                             }
@@ -83,7 +84,7 @@ const ForgetPassword = () => {
                                                 value={email}
                                                 onChange={(e) => validateEmail(e)}  
                                                 required                                    
-                                                placeholder="Email address"
+                                                placeholder="Email Address"
                                                 borderColor="#36454F" 
                                                 margin={5}                             
                                             />
@@ -93,8 +94,13 @@ const ForgetPassword = () => {
                                                 onClick={onForgetPassword}
                                                 margin={5}
                                                 height='50px'
-                                                bg='black'
+                                                width='80%'
+                                                backgroundImage='linear-gradient(to left, #00c6fb 0%, #005bea 100%)'
                                                 color='white'
+                                                borderColor="#36454F" 
+                                                borderRadius='lg' 
+                                                borderWidth='2px' 
+                                                boxShadow='xl'
                                                 _hover={{
                                                     background: "#36454F",
                                                     color: "white",
@@ -105,7 +111,7 @@ const ForgetPassword = () => {
                                             </Button>
                                         </VStack>
                                     </Box>
-                                    </Center>
+                                </Center>
                             </Box>
                         </FormControl>
                     </Box>
