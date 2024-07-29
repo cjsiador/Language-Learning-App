@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase';
 import { NavLink, useNavigate } from 'react-router-dom'
+import { FormControl, Input, Box, Center, Text, Button, VStack } from '@chakra-ui/react'
  
 const Login = () => {
     const navigate = useNavigate();
@@ -29,7 +30,7 @@ const Login = () => {
             <main>        
                 <section>
                     <div>                                            
-                        <p> FocusApp </p>                                   
+                        <p> Language Learning App</p>                                   
                         <form>                                              
                             <div>
                                 <label htmlFor="email-address">
