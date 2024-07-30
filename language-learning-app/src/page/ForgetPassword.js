@@ -32,7 +32,6 @@ const ForgetPassword = () => {
             setIsEmailSent(true);
             setEmail('');
             setIsEmailValid(false);
-            alert("Email Sent!");
         })
         .catch((error) => {
             const errorCode = error.code;
@@ -50,7 +49,7 @@ const ForgetPassword = () => {
                                     <Box alignContent='center' width='90%' height='500px' marginTop='50'>
                                         <VStack>
                                             <Text
-                                                fontSize='30px'
+                                                fontSize='32px'
                                                 fontWeight='bold'
                                                 textAlign='center'
                                             >
@@ -60,7 +59,7 @@ const ForgetPassword = () => {
                                                 width="80%"
                                                 textAlign='center'
                                                 color='gray'
-                                                fontSize='24px'
+                                                fontSize='16px'
                                             >
                                                 Recovering your account starts with the email linked to your account.
                                             </Text>
