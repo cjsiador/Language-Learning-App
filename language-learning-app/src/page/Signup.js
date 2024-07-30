@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import {  createUserWithEmailAndPassword  } from 'firebase/auth';
 import { auth } from '../firebase';
-import { InputRightElement, InputGroup, Input, Box, Center, Text, Button, VStack } from '@chakra-ui/react'
+import { InputRightElement, AlertDialogBody, AlertDialogOverlay, AlertDialogContent, AlertDialogHeader, AlertDialogFooter, useDisclosure, InputGroup, Input, Box, Center, Text, Button, VStack, AlertDialog } from '@chakra-ui/react'
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons' 
  
 const Signup = () => {
@@ -12,6 +12,9 @@ const Signup = () => {
     const [isEmailValid, setIsEmailValid] = useState();
     const [password, setPassword] = useState('');
     const [show, setShow] = useState(false);
+
+    const { isOpen, onOpen, onClose } = useDisclosure()
+    const cancelRef = useRef()
 
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -28,7 +31,6 @@ const Signup = () => {
         .then((userCredential) => {
             // Signed in
             const user = userCredential.user;
-            console.log(user);
             navigate("/login")
             // ...
         })
@@ -38,7 +40,7 @@ const Signup = () => {
             console.log(errorCode, errorMessage);
             // // ..
             if(errorCode == "auth/email-already-in-use") {
-                alert("Email already in use!");
+                onOpen();
             }
         });
     }
@@ -49,12 +51,40 @@ const Signup = () => {
  
     return (
         <>
-            <Box backgroundImage='linear-gradient(to top, #00c6fb 0%, #005bea 100%)' width='100wh' height='100vh'>
+            <Box backgroundImage='linear-gradient(to top, #00c6fb 0%, #005bea 100%)' width='100vw' height='100vh'>
                 <Center>
-                    <Box backgroundImage='linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%)' width="50vw" minWidth="300px" maxWidth="500px" marginTop='25vh' height='600px' borderColor="#36454F" borderRadius='lg' borderWidth='4px' boxShadow='dark-lg'>
+                    <Box backgroundImage='linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%)' width="50vw" minWidth="300px" maxWidth="500px" marginTop='15vh' height='600px' borderColor="#36454F" borderRadius='lg' borderWidth='4px' boxShadow='dark-lg'>
                         <Center>
-                            <Box alignContent='center' width='90%' height='500px' marginTop='50'>
-                                <VStack>
+                            <Box alignContent='center' width='90%' height='500px' marginTop='45'>
+                                <VStack>          
+                                    <AlertDialog
+                                        isOpen={isOpen}
+                                        leastDestructiveRef={cancelRef}
+                                        onClose={onClose}
+                                    >
+                                        <AlertDialogOverlay>
+                                            <AlertDialogContent
+                                                marginTop='40vh'
+                                            >
+                                                <AlertDialogHeader fontSize='xl' fontWeight='bold'>
+                                                    Email Already In Use!
+                                                </AlertDialogHeader>
+
+                                                <AlertDialogBody
+                                                    fontSize='md'
+                                                    color='red'
+                                                >
+                                                    {email} is already an account. Please try a different email address.
+                                                </AlertDialogBody>
+
+                                                <AlertDialogFooter>
+                                                    <Button colorScheme='red' onClick={onClose} ml={3}>
+                                                        Close
+                                                    </Button>
+                                                </AlertDialogFooter>
+                                            </AlertDialogContent>
+                                        </AlertDialogOverlay>
+                                    </AlertDialog>
                                     <Text
                                         fontSize='30px'
                                         fontWeight='bold'
@@ -115,24 +145,12 @@ const Signup = () => {
                                             />
                                             }
                                         </InputRightElement>
-                                    </InputGroup>
-                                    <Text 
-                                        as='b'
-                                        width="80%"
-                                        textAlign='right' 
-                                        fontSize='16px'
-                                        bgGradient='linear-gradient(to top, #00c6fb 0%, #005bea 100%)'
-                                        bgClip='text'
-                                    >
-                                        <NavLink to="/forgetpassword">
-                                            Reset Password
-                                        </NavLink>
-                                    </Text>                          
+                                    </InputGroup>                      
                                     <Button
                                         type="submit"
                                         disabled={!isEmailValid}                           
                                         onClick={onSubmit}
-                                        margin={3}
+                                        margin={10}
                                         height='50px'
                                         width='80%'
                                         backgroundImage='linear-gradient(to left, #00c6fb 0%, #005bea 100%)'
@@ -148,7 +166,7 @@ const Signup = () => {
                                             transitionTimingFunction: "ease-in-out"
                                         }}                                      
                                     >      
-                                        Login                                                                  
+                                        Create an Account                                                                
                                     </Button>
                                     <Text>
                                         Have an account? {' '}
@@ -161,7 +179,7 @@ const Signup = () => {
                                             bgClip='text'
                                         >
                                             <NavLink to="/login">
-                                                Login
+                                                Log In
                                             </NavLink>
                                         </Text>
                                     </Text>

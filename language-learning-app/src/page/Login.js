@@ -40,9 +40,9 @@ const Login = () => {
  
     return(
         <>
-            <Box backgroundImage='linear-gradient(to top, #00c6fb 0%, #005bea 100%)' width='100wh' height='100vh'>
+            <Box backgroundImage='linear-gradient(to top, #00c6fb 0%, #005bea 100%)' width='100vw' height='100vh'>
                 <Center>
-                    <Box backgroundImage='linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%)' width="50vw" minWidth="300px" maxWidth="500px" marginTop='25vh' height='600px' borderColor="#36454F" borderRadius='lg' borderWidth='4px' boxShadow='dark-lg'>
+                <Box backgroundImage='linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%)' width="50vw" minWidth="300px" maxWidth="500px" marginTop='15vh' height='600px' borderColor="#36454F" borderRadius='lg' borderWidth='4px' boxShadow='dark-lg'>
                         <Center>
                             <Box alignContent='center' width='90%' height='500px' marginTop='50'>
                                 <VStack>
@@ -140,9 +140,9 @@ const Login = () => {
                                             transitionTimingFunction: "ease-in-out"
                                         }}                                  
                                     >      
-                                        Login                                                                  
+                                        Log in                                                                  
                                     </Button>
-                                    <Text>
+                                    <Text m={5}>
                                         No account yet? {' '}
                                         <Text
                                             as='b'
