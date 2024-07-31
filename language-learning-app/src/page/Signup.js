@@ -153,7 +153,7 @@ const Signup = () => {
                                         margin={10}
                                         height='50px'
                                         width='80%'
-                                        backgroundImage='linear-gradient(to left, #00c6fb 0%, #005bea 100%)'
+                                        backgroundImage='linear-gradient(to-tl, #00c6fb 0%, #005bea 100%)'
                                         color='white'
                                         borderColor="#36454F" 
                                         borderRadius='lg' 

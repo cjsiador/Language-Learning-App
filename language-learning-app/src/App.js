@@ -5,7 +5,8 @@ import Home from './page/Home';
 import Signup from './page/Signup';
 import Login from './page/Login';
 import Landing from './page/Landing';
-import ForgetPassword from './page/ForgetPassword'; 
+import ForgetPassword from './page/ForgetPassword';
+import './App.css';
 
 function App() {
  

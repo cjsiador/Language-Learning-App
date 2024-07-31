@@ -1,0 +1,74 @@
+[
+    {
+      "id": 1,
+      "imageUrl": "https://bit.ly/dan-abramov",
+      "title": "Basic Japanese",
+      "description": "Learn the basic grammar and vocabulary of Japanese."
+    },
+    {
+      "id": 2,
+      "imageUrl": "https://example.com/image2.jpg",
+      "title": "Greetings and Self-Introduction",
+      "description": "Learn how to greet and introduce yourself in Japanese."
+    },
+    {
+      "id": 3,
+      "imageUrl": "https://example.com/image3.jpg",
+      "title": "Daily Conversation",
+      "description": "Learn phrases used in everyday Japanese conversation."
+    },
+    {
+      "id": 4,
+      "imageUrl": "https://example.com/image4.jpg",
+      "title": "Numbers and Time",
+      "description": "Learn how to count and express time in Japanese."
+    },
+    {
+      "id": 5,
+      "imageUrl": "https://example.com/image5.jpg",
+      "title": "Shopping and Ordering",
+      "description": "Learn how to shop and order at a restaurant in Japanese."
+    },
+    {
+      "id": 6,
+      "imageUrl": "https://example.com/image6.jpg",
+      "title": "Asking for Directions",
+      "description": "Learn how to ask for directions and explain locations in Japanese."
+    },
+    {
+      "id": 7,
+      "imageUrl": "https://example.com/image7.jpg",
+      "title": "Transportation",
+      "description": "Learn how to use public transportation like trains and buses in Japanese."
+    },
+    {
+      "id": 8,
+      "imageUrl": "https://example.com/image8.jpg",
+      "title": "School Life",
+      "description": "Learn vocabulary and phrases related to school life in Japan."
+    },
+    {
+      "id": 9,
+      "imageUrl": "https://example.com/image9.jpg",
+      "title": "Workplace Communication",
+      "description": "Learn phrases and etiquette used in the workplace in Japan."
+    },
+    {
+      "id": 10,
+      "imageUrl": "https://example.com/image10.jpg",
+      "title": "Food Culture",
+      "description": "Learn vocabulary related to Japanese food culture and cuisine."
+    },
+    {
+      "id": 11,
+      "imageUrl": "https://example.com/image11.jpg",
+      "title": "Travel Preparation",
+      "description": "Learn phrases and vocabulary needed for traveling in Japan."
+    },
+    {
+      "id": 12,
+      "imageUrl": "https://example.com/image12.jpg",
+      "title": "Holidays and Events",
+      "description": "Learn about Japanese holidays and traditional events."
+    }
+]

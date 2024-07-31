@@ -149,7 +149,7 @@ const Login = () => {
                                             width="80%"
                                             textAlign='right' 
                                             fontSize='16px'
-                                            bgGradient='linear-gradient(to top, #00c6fb 0%, #005bea 100%)'
+                                            bgGradient='linear-gradient(to-tl, #00c6fb 0%, #005bea 100%)'
                                             bgClip='text'
                                         >
                                             <NavLink to="/signup">
