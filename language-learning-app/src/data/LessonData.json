@@ -1,25 +1,25 @@
 [
     {
       "id": 1,
-      "imageUrl": "https://bit.ly/dan-abramov",
+      "imageUrl": "/Illustration/hiragana.jpg",
       "title": "Basic Japanese",
       "description": "Learn the basic grammar and vocabulary of Japanese."
     },
     {
       "id": 2,
-      "imageUrl": "https://example.com/image2.jpg",
+      "imageUrl": "/Illustration/Hello.png",
       "title": "Greetings and Self-Introduction",
       "description": "Learn how to greet and introduce yourself in Japanese."
     },
     {
       "id": 3,
-      "imageUrl": "https://example.com/image3.jpg",
+      "imageUrl": "/Illustration/conversation.png",
       "title": "Daily Conversation",
       "description": "Learn phrases used in everyday Japanese conversation."
     },
     {
       "id": 4,
-      "imageUrl": "https://example.com/image4.jpg",
+      "imageUrl": "/Illustration/time.png",
       "title": "Numbers and Time",
       "description": "Learn how to count and express time in Japanese."
     },

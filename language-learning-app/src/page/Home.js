@@ -22,15 +22,6 @@ const Home = () => {
             }
           })
     }, [])
-
-    const handleLogout = () => {
-        signOut(auth).then(() => {
-            // Sign-out successful.
-            navigate('/');
-        }).catch((error) => {
-            navigate('/');
-        });
-    }
     
     return (
         <>
@@ -48,9 +39,6 @@ const Home = () => {
                     </Flex>
                 </Box>
             </Box>
-            <button onClick={handleLogout}>
-                Logout
-            </button>
         </>
     );
 };

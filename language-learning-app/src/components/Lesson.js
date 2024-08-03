@@ -1,6 +1,6 @@
 import React from 'react';
 import LessonData from '../data/LessonData.json';
-import { Box, Image, Text, Button, Flex, HStack } from '@chakra-ui/react';
+import { Box, Image, Text, Button, Flex, HStack, Spacer } from '@chakra-ui/react';
 import { FiPlay } from "react-icons/fi";
 
 const Lesson = () => {
@@ -12,14 +12,21 @@ const Lesson = () => {
                 height="450px"
                 overflowY="scroll"
                 align="center"
-                // backgroundColor="white"
                 borderRadius="16px"
             >
             <HStack>
+                <Box
+                    width="40px"
+                    height="50px"
+                    
+                >
+                    <Spacer width="40px"/>
+                </Box>
                 {LessonData.map((LessonData, i) => {                        
                     return (
                         <Box 
                             key={i}
+                            marginRight="20px"
                         >
                             <Box
                                 width="400px"
@@ -44,14 +51,23 @@ const Lesson = () => {
                             >
                                 {/* Top Section */}
                                 <Box
+                                    position="abso"
                                     padding="20px"
                                     height="300px"
-                                    background="linear-gradient(145deg, #9f7aea, #805ad5)"
+                                    // background="linear-gradient(180deg, #000000, #ffffff)"
+                                    backgroundImage={LessonData.imageUrl}
+                                    backgroundRepeat='no-repeat'
+                                    backgroundSize='100%'
+                                    backdropFilter='auto' 
+                                    backdropBlur='80px'
                                     color="white"
+                                    zIndex="0"
                                 >
-                                    <Text fontSize="32px" textShadow='1px 1px 7px #000000' fontWeight="bold" mb="4">
-                                        {LessonData.title}
-                                    </Text>
+                                    <Box position="relative" zIndex="1" p={4}>
+                                        <Text fontSize="32px" textShadow='1px 1px 15px #000000' fontWeight="bold" mb="4">
+                                            {LessonData.title}
+                                        </Text>
+                                    </Box>
                                 </Box>
                                 {/* Bottom White Box */}
                                 <Box
@@ -95,6 +111,13 @@ const Lesson = () => {
                         )
                     })
                 }
+                <Box
+                    width="40px"
+                    height="50px"
+                    
+                >
+                    <Spacer width="40px"/>
+                </Box>
             </HStack>
             </Box>
             </Box>

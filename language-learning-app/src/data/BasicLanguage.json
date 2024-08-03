@@ -1,0 +1,62 @@
+{
+    "hiragana": {
+      "a": [
+        {"roman": "a", "character": "あ"},
+        {"roman": "ka", "character": "か"},
+        {"roman": "sa", "character": "さ"},
+        {"roman": "ta", "character": "た"},
+        {"roman": "na", "character": "な"},
+        {"roman": "ha", "character": "は"},
+        {"roman": "ma", "character": "ま"},
+        {"roman": "ya", "character": "や"},
+        {"roman": "ra", "character": "ら"},
+        {"roman": "wa", "character": "わ"}
+      ],
+      "i": [
+        {"roman": "i", "character": "い"},
+        {"roman": "ki", "character": "き"},
+        {"roman": "shi", "character": "し"},
+        {"roman": "chi", "character": "ち"},
+        {"roman": "ni", "character": "に"},
+        {"roman": "hi", "character": "ひ"},
+        {"roman": "mi", "character": "み"},
+        {"roman": "ri", "character": "り"}
+      ],
+      "u": [
+        {"roman": "u", "character": "う"},
+        {"roman": "ku", "character": "く"},
+        {"roman": "su", "character": "す"},
+        {"roman": "tsu", "character": "つ"},
+        {"roman": "nu", "character": "ぬ"},
+        {"roman": "fu", "character": "ふ"},
+        {"roman": "mu", "character": "む"},
+        {"roman": "yu", "character": "ゆ"},
+        {"roman": "ru", "character": "る"}
+      ],
+      "e": [
+        {"roman": "e", "character": "え"},
+        {"roman": "ke", "character": "け"},
+        {"roman": "se", "character": "せ"},
+        {"roman": "te", "character": "て"},
+        {"roman": "ne", "character": "ね"},
+        {"roman": "he", "character": "へ"},
+        {"roman": "me", "character": "め"},
+        {"roman": "re", "character": "れ"}
+      ],
+      "o": [
+        {"roman": "o", "character": "お"},
+        {"roman": "ko", "character": "こ"},
+        {"roman": "so", "character": "そ"},
+        {"roman": "to", "character": "と"},
+        {"roman": "no", "character": "の"},
+        {"roman": "ho", "character": "ほ"},
+        {"roman": "mo", "character": "も"},
+        {"roman": "yo", "character": "よ"},
+        {"roman": "ro", "character": "ろ"},
+        {"roman": "wo", "character": "を"}
+      ],
+      "n": [
+        {"roman": "n", "character": "ん"}
+      ]
+    }
+  }
