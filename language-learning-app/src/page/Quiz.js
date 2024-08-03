@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Box, Button, Flex, Text, Center, VStack, Progress } from "@chakra-ui/react";
+import { Box, Button, Flex, Text, Center, VStack, Progress, SlideFade, useDisclosure } from "@chakra-ui/react";
 import Header from '../components/Header';
 import BasicLanguage from "../data/BasicLanguage.json"
 
@@ -7,8 +7,21 @@ const Quiz = () => {
 
     const [selectedQuizItem, setSelectedQuizItem] = useState([]);
     const [selectedItems, setSelectedItems] = useState([]);
+
+    const [isContinuing, setContinuing] = useState(false);
+    const [isQuizDone, setQuizDone] = useState(false);
+    
     const buttonRefs = useRef([]);
-    const [progress, setProgress] = useState([]);
+    const slideRef = useRef();
+    const titleNameRef = useRef(null);
+    const descriptionRef = useRef(null);
+
+    const [progress, setProgress] = useState(0);
+    const [quizIndex, setQuizIndex] = useState(1)
+
+    const { isOpen, onToggle } = useDisclosure()
+
+    const totalQuiz = 7;
 
     // Function to shuffle an array
     const shuffleArray = (array) => {
@@ -19,10 +32,8 @@ const Quiz = () => {
         return array;
     };
 
-    // const SelectRandomHiragana = () => {
-        useEffect(() => {
+    const SelectRandomHiragana = () => {
         //Todo select 4 random unique hiragana.
-        
         if (selectedQuizItem == null) {
             return;
         }
@@ -41,7 +52,7 @@ const Quiz = () => {
         setSelectedQuizItem(chosenItem);
 
         // Remove the chosen item from the list
-        const remainingItems = allItems.filter(item => item.roman !== chosenItem);
+        const remainingItems = allItems.filter(item => item.roman !== chosenItem.roman);
 
         // Shuffle the remaining items
         const shuffledItems = shuffleArray(remainingItems);
@@ -56,21 +67,59 @@ const Quiz = () => {
         const finalItems = shuffleArray(combinedItems);
 
         setSelectedItems(finalItems);
-    }, []);  // Empty dependency array ensures this runs only once on initial render
+    }
 
     const answerChoices = (choices, index) => {
-        console.log(choices);
-        console.log("Clicked Answer Chocies!");
-
         // Disable the clicked button
-        if (selectedQuizItem.roman != choices) {
-            buttonRefs.current[index].disabled = true; 
+        if (selectedQuizItem.roman !== choices) {
+            buttonRefs.current[index].disabled = true;
+            buttonRefs.current[index].style.backgroundColor = "#B22222"
+            onToggle();
+            slideRef.current.style.backgroundColor= '#E53E3E';
+            titleNameRef.current.innerText = 'Correct solution:'
+            descriptionRef.current.innerText = `${selectedQuizItem.roman}`;
+            setContinuing(false);
         }
         
-        if (selectedQuizItem.roman == choices) {
+        if (selectedQuizItem.roman === choices) {
             buttonRefs.current[index].style.backgroundColor = "#3EA055";
-            alert("Correct!");
+            setQuizIndex(quizIndex => quizIndex + 1);
+            setProgress((quizIndex/totalQuiz) * 100);
+            onToggle();
+            slideRef.current.style.backgroundColor = '#38A169';
+            titleNameRef.current.innerText = 'Good!';
+            descriptionRef.current.innerText = '';
+            setContinuing(true);
         }
+    }
+
+    useEffect(() => {
+        SelectRandomHiragana();
+        setQuizDone(false);
+    }, []);  // Empty dependency array ensures this runs only once on initial render
+
+    const continueHandle = () => {
+        if (isContinuing === true){
+            if(progress > 100) {
+                setQuizDone(true);  // WIP DOOO SOME THING ABOUT THIS. HAVE A POPUP OR SOMETHING
+            } else {
+                SelectRandomHiragana();
+            }
+        }
+        
+        SelectRandomHiragana();
+        setContinuing(false);
+        onToggle();
+        resetAnswerChoices();
+    }
+
+    const resetAnswerChoices = () => {
+        buttonRefs.current.forEach((currentRef, index) => {
+            if (currentRef) {
+                currentRef.disabled = false;
+                currentRef.style.backgroundColor = "#E2E8F0";
+            }
+        });
     }
 
     return (
@@ -97,7 +146,7 @@ const Quiz = () => {
                                 </Box>
                                 <Box width="100vw" height="150px" p="12">
                                     <Box 
-                                        marginRight="0px"
+                                        marginTop="-50px"
                                     >
                                         <Center>
                                             <Box
@@ -105,9 +154,10 @@ const Quiz = () => {
                                                 height="500px"
                                                 borderRadius="15px"
                                                 overflow="hidden"
-                                                boxShadow="md"
+                                                boxShadow="dark-lg"
                                                 fontFamily="Arial, sans-serif"
-                                                overflowX="scroll"                                            
+                                                borderWidth="2px"
+                                                borderColor="black"                                                                                                                                  
                                             >
                                                 {/* Top Section */}
                                                 <Box
@@ -122,6 +172,7 @@ const Quiz = () => {
                                                     color="white"
                                                     zIndex="0"
                                                 >
+                                                    <Progress mt="-20px" marginLeft="-20px" borderRadius="15px" colorScheme='green' backgroundColor="white" value={progress} width="500px"></Progress>
                                                     <Box 
                                                         position="relative" 
                                                         zIndex="1" 
@@ -132,8 +183,7 @@ const Quiz = () => {
                                                             fontSize="62px" 
                                                             textShadow='1px 1px 15px #000000' 
                                                             fontWeight="bold" 
-                                                            mb="4"
-                                                            mt='25%'
+                                                            mt='20%'
                                                         >
                                                             {selectedQuizItem.character}
                                                         </Text>
@@ -174,6 +224,42 @@ const Quiz = () => {
                                                 </Box>
                                             </Box>
                                         </Center>
+                                        <Box
+                                            position="fixed"
+                                            bottom={0}
+                                            left={0}
+                                            right={0}
+                                            p={0}
+                                            zIndex={10} // Adjust zIndex as needed
+                                        >
+                                            <SlideFade in={isOpen}>
+                                                <Flex
+                                                    p='40px'
+                                                    color='white'
+                                                    mt='2'
+                                                    ref={slideRef}
+                                                    rounded='md'
+                                                    shadow='md'
+                                                    justifyContent="space-between"
+                                                    alignItems='center'
+                                                >
+                                                    <Flex direction="column">
+                                                        <Text 
+                                                            ref={titleNameRef}
+                                                        />
+                                                        <Text
+                                                            fontStyle='b'
+                                                            ref={descriptionRef}
+                                                        />
+                                                    </Flex>
+                                                    <Button
+                                                        onClick={continueHandle}    
+                                                    >
+                                                        Continue
+                                                    </Button>
+                                                </Flex>
+                                            </SlideFade>
+                                        </Box>
                                     </Box>
                                 </Box>    
                             </Box>
