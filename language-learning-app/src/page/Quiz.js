@@ -100,7 +100,7 @@ const Quiz = () => {
 
     const continueHandle = () => {
         if (isContinuing === true){
-            if(progress > 100) {
+            if(progress >= 100) {
                 setQuizDone(true);  // WIP DOOO SOME THING ABOUT THIS. HAVE A POPUP OR SOMETHING
             } else {
                 SelectRandomHiragana();
