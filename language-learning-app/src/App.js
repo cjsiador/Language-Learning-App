@@ -8,6 +8,7 @@ import Landing from './page/Landing';
 import ForgetPassword from './page/ForgetPassword';
 import Quiz from './page/Quiz';
 import './App.css';
+import LessonData from './data/LessonData.json';
 
 function App() {
  
@@ -20,8 +21,11 @@ function App() {
               <Route path="/home" element={<Home/>}/>
               <Route path="/signup" element={<Signup/>}/>
               <Route path="/login" element={<Login/>}/>
-              <Route path="/forgetpassword" element={<ForgetPassword/>}/>
-              <Route path="/quiz" element={<Quiz/>}/>
+              <Route path="/forget-password" element={<ForgetPassword/>}/>
+              {/* <Route path="/quiz" element={<Quiz/>}/> */}
+              {LessonData.map(lesson => (
+                <Route key={lesson.id} path={`${lesson.url}`} element={<Quiz/>}/>) 
+              )}
             </Routes>                    
         </section>
       </div>

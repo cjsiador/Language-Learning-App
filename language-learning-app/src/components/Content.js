@@ -16,10 +16,6 @@ const Content = () => {
       </Box>
         <Box width="100vw" height="150px" p="12">
           <Text color='white' fontSize="32px">Featured</Text>
-          {/* <Flex justifyContent="space-between" alignItems="center" width="100%">
-            <Button colorScheme="blue">Left Button</Button>
-            <Button colorScheme="green">Right Button</Button>
-          </Flex> */}
         </Box>
       <Flex marginTop="-70px">
         <Lesson />

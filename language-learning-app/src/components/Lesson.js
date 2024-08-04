@@ -1,12 +1,12 @@
 import React, { useRef } from 'react';
 import LessonData from '../data/LessonData.json';
-import { Box, Text, Button, Flex, HStack, Spacer } from '@chakra-ui/react';
+import { Box, Text, Button, Flex, HStack, Spacer, Center } from '@chakra-ui/react';
 import { FiPlay } from "react-icons/fi";
 import useDragScroll from '../hooks/useDragScroll';
+import useScrollButton from '../hooks/useScrollButton';
+import {Link} from 'react-router-dom';
 
 const Lesson = () => {
-    // const scrollRef = useRef(null);
-
     const {
         scrollRef,
         handleMouseDown,
@@ -14,45 +14,48 @@ const Lesson = () => {
         handleMouseMove,
     } = useDragScroll();
 
-    const scrollRight = () => {
-        if (scrollRef.current) {
-            scrollRef.current.scrollBy({ left: 100, behavior: 'smooth' });
-        }
-    };
-
-    const scrollLeft = () => {
-        if (scrollRef.current) {
-            scrollRef.current.scrollBy({ left: -100, behavior: 'smooth' });
-        }
-    };
+    const {
+        scrollButtonRef,
+        handleScrollRight,
+        handleScrollLeft,
+        stopScroll,
+    } = useScrollButton();
 
     return (
         <>
             <Box width="100vw" align="center">
-                <Flex>
-                    <HStack>
-                        <Button 
-                            onClick={scrollLeft}
-                            // onMouseDown={scrollLeft}
-                        >
-                            Scroll Left
-                        </Button>
-                        <Button 
-                            onClick={scrollRight}
-                            onMouseDown={scrollRight}
-                        >
-                            Scroll Right
-                        </Button>
-                    </HStack>
-                </Flex>
+                <Center>
+                    <Flex>
+                        <HStack>
+                            <Button
+                                onMouseDown={handleScrollLeft}
+                                onMouseUp={stopScroll}
+                                onMouseLeave={stopScroll}
+                            >
+                                Scroll Left
+                            </Button>
+                            <Button
+                                onMouseDown={handleScrollRight}
+                                onMouseUp={stopScroll}
+                                onMouseLeave={stopScroll}
+                            >
+                                Scroll Right
+                            </Button>
+                        </HStack>
+                    </Flex>
+                </Center>
                 <Box
                     height="450px"
                     overflowX="scroll"
                     align="center"
                     borderRadius="16px"
-                    ref={scrollRef}
+                    ref={ (element) => 
+                        {
+                            scrollRef.current = element; 
+                            scrollButtonRef.current = element;
+                        }
+                    }
                     onMouseDown={handleMouseDown}
-                    onMouseLeave={handleMouseLeaveOrUp}
                     onMouseUp={handleMouseLeaveOrUp}
                     onMouseMove={handleMouseMove}
                     cursor="grab"
@@ -69,14 +72,15 @@ const Lesson = () => {
                         <Box width="40px" height="50px">
                             <Spacer width="40px" />
                         </Box>
-                        {LessonData.map((lesson, i) => (
-                            <Box style={{ userSelect: "none" }} key={i} marginRight="20px">
+                        {LessonData.slice(0, 5).map((lesson, i) => (
+                            <Box style={{ userSelect: "none" }} key={i} marginRight="20px" borderRadius='15px'>
                                 <Box
                                     width="400px"
                                     borderRadius="15px"
                                     boxShadow="md"
                                     fontFamily="Arial, sans-serif"
                                     marginTop="7%"
+                                    overflowX='hidden'
                                 >
                                     {/* Top Section */}
                                     <Box
@@ -103,21 +107,24 @@ const Lesson = () => {
                                     </Box>
                                     {/* Bottom White Box */}
                                     <Box backgroundColor="white" padding="10px 20px" color="gray.700">
-                                        <Button
-                                            height="80px"
-                                            width="80px"
-                                            borderRadius="100%"
-                                            backgroundColor="white"
-                                            color="#805ad5"
-                                            _hover={{ bg: "gray.200" }}
-                                            mt="-70px"
-                                            ml="225px"
-                                            borderWidth="1px"
-                                            borderColor="gray"
-                                            boxShadow="0 0 10px 2px rgba(0, 0, 0, 0.2)"
-                                        >
-                                            <FiPlay />
-                                        </Button>
+                                        <Link to={lesson.url}>
+                                            <Button
+                                                height="80px"
+                                                width="80px"
+                                                borderRadius="100%"
+                                                backgroundColor="white"
+                                                color="#805ad5"
+                                                _hover={{ bg: "gray.200" }}
+                                                mt="-70px"
+                                                ml="225px"
+                                                borderWidth="1px"
+                                                borderColor="gray"
+                                                boxShadow="0 0 10px 2px rgba(0, 0, 0, 0.2)"
+                                                // onClick={quizHandle(lesson.url)}
+                                            >
+                                                <FiPlay />
+                                            </Button>
+                                        </Link>
                                         <Flex justifyContent="space-between" textAlign="center">
                                             <Box>
                                                 <Text fontSize="lg" fontWeight="bold">13</Text>

@@ -116,7 +116,7 @@ const Login = () => {
                                         bgGradient='linear-gradient(to top, #00c6fb 0%, #005bea 100%)'
                                         bgClip='text'
                                     >
-                                        <NavLink to="/forgetpassword">
+                                        <NavLink to="/forget-password">
                                             Reset Password
                                         </NavLink>
                                     </Text>                          
