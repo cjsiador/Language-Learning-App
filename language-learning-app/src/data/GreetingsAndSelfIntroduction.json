@@ -1,88 +1,86 @@
 {
-  "lesson": {
-    "phases": [
-      {
-        "phrase": "おはようございます",
-        "romaji": "Ohayou gozaimasu",
-        "translation": "Good morning",
-        "breakdown":
-          [
-            "おはよう",
-            "ございます"
-          ]
-      },
-      {
-        "phrase": "こんにちは",
-        "romaji": "Konnichiwa",
-        "translation": "Good afternoon / Hello",
-        "breakdown":
-          [
-            "おはよう",
-            "ございます"
-          ]
-      },
-      {
-        "phrase": "こんばんは",
-        "romaji": "Konbanwa",
-        "translation": "Good evening",
-        "breakdown":
-          [
-            "こんばん",
-            "は"
-          ]
-      },
-      {
-        "phrase": "おやすみなさい",
-        "romaji": "Oyasuminasai",
-        "translation": "Good night",
-        "breakdown":
-          [
-            "おやすみ",
-            "なさい"
-          ]
-      },
-      {
-        "phrase": "さようなら",
-        "romaji": "Sayounara",
-        "translation": "Goodbye",
-        "breakdown":
-          [
-            "さよう",
-            "なら"
-          ]
-      },
-      {
-        "phrase": "じゃあね",
-        "romaji": "Jaa ne",
-        "translation": "See you",
-        "breakdown": 
-          [
-            "じゃあ",
-            "ね"
-          ]
-      },
-      {
-        "phrase": "お元気ですか？",
-        "romaji": "Ogenki desu ka?",
-        "translation": "How are you?",
-        "breakdown": 
-          [
-            "お",
-            "元気",
-            "です",
-            "か"
-          ]
-      },
-      {
-        "phrase": "はい、元気です。",
-        "romaji": "Hai, genki desu.",
-        "translation": "Yes, I am fine.",
-        "breakdown": [
-          "はい",
-          "元気",
-          "です"
+  "lesson": [
+    {
+      "phrase": "おはようございます",
+      "romaji": "Ohayou gozaimasu",
+      "translation": "Good morning",
+      "breakdown":
+        [
+          "おはよう",
+          "ございます"
         ]
-      }
-    ]
-  }    
+    },
+    {
+      "phrase": "こんにちは",
+      "romaji": "Konnichiwa",
+      "translation": "Good afternoon / Hello",
+      "breakdown":
+        [
+          "おはよう",
+          "ございます"
+        ]
+    },
+    {
+      "phrase": "こんばんは",
+      "romaji": "Konbanwa",
+      "translation": "Good evening",
+      "breakdown":
+        [
+          "こんばん",
+          "は"
+        ]
+    },
+    {
+      "phrase": "おやすみなさい",
+      "romaji": "Oyasuminasai",
+      "translation": "Good night",
+      "breakdown":
+        [
+          "おやすみ",
+          "なさい"
+        ]
+    },
+    {
+      "phrase": "さようなら",
+      "romaji": "Sayounara",
+      "translation": "Goodbye",
+      "breakdown":
+        [
+          "さよう",
+          "なら"
+        ]
+    },
+    {
+      "phrase": "じゃあね",
+      "romaji": "Jaa ne",
+      "translation": "See you",
+      "breakdown": 
+        [
+          "じゃあ",
+          "ね"
+        ]
+    },
+    {
+      "phrase": "お元気ですか？",
+      "romaji": "Ogenki desu ka?",
+      "translation": "How are you?",
+      "breakdown": 
+        [
+          "お",
+          "元気",
+          "です",
+          "か"
+        ]
+    },
+    {
+      "phrase": "はい、元気です。",
+      "romaji": "Hai, genki desu.",
+      "translation": "Yes, I am fine.",
+      "breakdown": [
+        "はい",
+        "元気",
+        "です"
+      ]
+    }
+  ]    
 }
