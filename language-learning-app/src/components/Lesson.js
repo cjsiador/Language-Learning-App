@@ -106,7 +106,7 @@ const Lesson = () => {
                                         </Box>
                                     </Box>
                                     {/* Bottom White Box */}
-                                    <Box backgroundColor="white" padding="10px 20px" color="gray.700">
+                                    <Box backgroundImage= "radial-gradient( circle 827px at 47.3% 48%,  rgba(255,255,255,1) 0%, rgba(138,192,216,1) 90% )" padding="10px 20px" color="gray.700">
                                         <Link to={lesson.url}>
                                             <Button
                                                 height="80px"
@@ -125,7 +125,7 @@ const Lesson = () => {
                                                 <FiPlay />
                                             </Button>
                                         </Link>
-                                        <Flex justifyContent="space-between" textAlign="center">
+                                        {/* <Flex justifyContent="space-between" textAlign="center">
                                             <Box>
                                                 <Text fontSize="lg" fontWeight="bold">13</Text>
                                                 <Text fontSize="sm">Chapters</Text>
@@ -138,7 +138,7 @@ const Lesson = () => {
                                                 <Text fontSize="lg" fontWeight="bold">0%</Text>
                                                 <Text fontSize="sm">Complete</Text>
                                             </Box>
-                                        </Flex>
+                                        </Flex> */}
                                     </Box>
                                 </Box>
                             </Box>
